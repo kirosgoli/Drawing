@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Drawing.SharedCode.Models.Drawings
 {
-    class DrawFactory
+    public static class DrawFactory
     {
-        public IDrawing CreateGroupDraw(int groupsNumber, int groupCapacity)
+        public static IDrawing CreateGroupDraw(int groupsNumber, int groupCapacity)
         {
             GroupDrawing groupDrawing = new GroupDrawing();
             groupDrawing.CreateGroups(groupsNumber);

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Drawing.SharedCode.Models.Drawings
 {
-    class GroupDrawing : IDrawing
+    public class GroupDrawing : IDrawing
     {
         public IEnumerable<Group> Groups { get; private set; }
 
