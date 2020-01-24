@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Drawing.SharedCode
+namespace Drawing.SharedCode.Interfaces
 {
-    public class Class1
+    interface IDrawing
     {
+        IDrawing Draw();
+        void SetTeams(ITeamSource source);
     }
 }
