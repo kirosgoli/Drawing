@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IDrawing.cs" />
-    <Compile Include="Interfaces\ITeamSource.cs" />
+    <Compile Include="Interfaces\ITeamsSource.cs" />
     <Compile Include="Models\Drawings\DrawFactory.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\Drawings\GroupDrawing.cs" />
@@ -50,6 +50,7 @@
     <Compile Include="Models\Drawings\PairDrawing.cs" />
     <Compile Include="Models\Team.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sources\TeamsContainerSource.cs" />
     <Compile Include="Tools\GroupNameCreator.cs" />
   </ItemGroup>
   <ItemGroup />

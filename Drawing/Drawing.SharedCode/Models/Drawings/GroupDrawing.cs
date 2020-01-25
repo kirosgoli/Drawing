@@ -11,6 +11,7 @@ namespace Drawing.SharedCode.Models.Drawings
     public class GroupDrawing : IDrawing
     {
         public IEnumerable<Group> Groups { get; private set; }
+        private List<Team> drawingTeams;
 
         internal void CreateGroups(int number)
         {
@@ -21,14 +22,15 @@ namespace Drawing.SharedCode.Models.Drawings
             }
             this.Groups = Groups;
         }
-        public IDrawing Draw()
+        public void Draw()
         {
             throw new NotImplementedException();
         }
 
-        public void SetTeams(ITeamSource source)
+        internal void SetTeams(List<Team> teams)
         {
-            throw new NotImplementedException();
+            drawingTeams = teams;
         }
+
     }
 }

@@ -16,7 +16,7 @@ namespace Drawing.SharedCode.Tests
         public void ShouldGroupsHaveCorrectNameBaseOnNumberParametr()
         {
             int numberParameter = 4;
-            GroupDrawing groupDrawing = DrawFactory.CreateGroupsDraw(numberParameter, 4) as GroupDrawing;
+            GroupDrawing groupDrawing = DrawFactory.CreateGroupsDraw(numberParameter, 4,null) as GroupDrawing;
             //groupDrawing.Draw();
             Assert.IsTrue(true);
         }
