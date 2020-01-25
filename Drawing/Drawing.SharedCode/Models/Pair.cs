@@ -8,8 +8,8 @@ namespace Drawing.SharedCode.Models
 {
     public class Pair
     {
-        public Team HomeTeam { get; set; }
-        public Team AwayTeam { get; set; }
+        public Team HomeTeam { get; internal set; }
+        public Team AwayTeam { get; internal set; }
 
         public override string ToString()
         {

@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="GroupDrawingTest.cs" />
     <Compile Include="GroupNameCreatorTests.cs" />
+    <Compile Include="PairDrawingTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

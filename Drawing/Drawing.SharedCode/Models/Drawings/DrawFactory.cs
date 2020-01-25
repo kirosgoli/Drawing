@@ -9,7 +9,7 @@ namespace Drawing.SharedCode.Models.Drawings
 {
     public static class DrawFactory
     {
-        public static IDrawing CreateGroupsDraw(int groupsNumber, int groupCapacity)
+        public static IDrawing CreateGroupsDraw(int groupsNumber, int groupCapacity,ITeamsSource source)
         {
             GroupDrawing groupDrawing = new GroupDrawing();
             groupDrawing.CreateGroups(groupsNumber);
@@ -17,10 +17,10 @@ namespace Drawing.SharedCode.Models.Drawings
             return groupDrawing;
         }
 
-        public static IDrawing CreatePairsDraw()
+        public static IDrawing CreatePairsDraw(ITeamsSource teamsource)
         {
             PairDrawing pairDrawing = new PairDrawing();
-
+            pairDrawing.SetTeams(teamsource.GetTeams().ToList());
             return pairDrawing;
         }
     }
