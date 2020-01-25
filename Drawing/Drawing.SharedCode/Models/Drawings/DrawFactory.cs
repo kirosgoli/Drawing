@@ -7,14 +7,21 @@ using System.Threading.Tasks;
 
 namespace Drawing.SharedCode.Models.Drawings
 {
-    class DrawFactory
+    public static class DrawFactory
     {
-        public IDrawing CreateGroupDraw(int groupsNumber, int groupCapacity)
+        public static IDrawing CreateGroupsDraw(int groupsNumber, int groupCapacity)
         {
             GroupDrawing groupDrawing = new GroupDrawing();
             groupDrawing.CreateGroups(groupsNumber);
 
             return groupDrawing;
+        }
+
+        public static IDrawing CreatePairsDraw()
+        {
+            PairDrawing pairDrawing = new PairDrawing();
+
+            return pairDrawing;
         }
     }
 }

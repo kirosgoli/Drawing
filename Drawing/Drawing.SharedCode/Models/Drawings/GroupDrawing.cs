@@ -1,4 +1,5 @@
 ﻿using Drawing.SharedCode.Interfaces;
+using Drawing.SharedCode.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,17 +8,18 @@ using System.Threading.Tasks;
 
 namespace Drawing.SharedCode.Models.Drawings
 {
-    class GroupDrawing : IDrawing
+    public class GroupDrawing : IDrawing
     {
         public IEnumerable<Group> Groups { get; private set; }
 
         internal void CreateGroups(int number)
         {
-            Groups = new List<Group>();
-            for (int i = 0; i < number; i++)
+            List<Group> Groups = new List<Group>();
+            for (int i = 1; i <= number; i++)
             {
-                //Groups = new Group() { Name = CreateGroupName(i)}
+                Groups.Add(new Group() { Name = GroupNameCreator.CreateGroupNameFromNumber(i) });
             }
+            this.Groups = Groups;
         }
         public IDrawing Draw()
         {

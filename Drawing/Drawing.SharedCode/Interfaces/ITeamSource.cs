@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Drawing.SharedCode.Interfaces
 {
-    interface ITeamSource
+    public interface ITeamSource
     {
     }
 }
