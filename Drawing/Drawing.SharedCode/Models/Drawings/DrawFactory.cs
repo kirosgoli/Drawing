@@ -9,12 +9,19 @@ namespace Drawing.SharedCode.Models.Drawings
 {
     public static class DrawFactory
     {
-        public static IDrawing CreateGroupDraw(int groupsNumber, int groupCapacity)
+        public static IDrawing CreateGroupsDraw(int groupsNumber, int groupCapacity)
         {
             GroupDrawing groupDrawing = new GroupDrawing();
             groupDrawing.CreateGroups(groupsNumber);
 
             return groupDrawing;
+        }
+
+        public static IDrawing CreatePairsDraw()
+        {
+            PairDrawing pairDrawing = new PairDrawing();
+
+            return pairDrawing;
         }
     }
 }

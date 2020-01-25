@@ -10,15 +10,15 @@ using System.Threading.Tasks;
 namespace Drawing.SharedCode.Tests
 {
     [TestClass]
-    class GroupDrawingTest
+    public class GroupDrawingTest
     {
         [TestMethod]
         public void ShouldGroupsHaveCorrectNameBaseOnNumberParametr()
         {
             int numberParameter = 4;
-            IDrawing groupDrawing = DrawFactory.CreateGroupDraw(numberParameter, 4) as GroupDrawing;
+            GroupDrawing groupDrawing = DrawFactory.CreateGroupsDraw(numberParameter, 4) as GroupDrawing;
             //groupDrawing.Draw();
-            
+            Assert.IsTrue(true);
         }
     }
 }
