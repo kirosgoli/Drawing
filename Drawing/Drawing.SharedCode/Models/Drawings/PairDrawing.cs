@@ -11,6 +11,7 @@ namespace Drawing.SharedCode.Models.Drawings
         internal IEnumerable<ITeamValidation> Validations { get; private set; }
         public IEnumerable<Pair> Pairs { get; private set; }
 
+
         public PairDrawing()
         {
         }
@@ -80,19 +81,82 @@ namespace Drawing.SharedCode.Models.Drawings
                 int k = 2;
                 int n = teams.Count;
 
-                int number_of_all_matches = (Factorial(n) / (Factorial(n - k) * Factorial(k)));
-                int number_of_disallowed_matches = 0;
-                for (int i = 0; i < teams.Count; i++)
+                //int number_of_all_matches = (Factorial(n) / (Factorial(n - k) * Factorial(k)));
+                //int number_of_allowed_pairs = 0;
+                //int number_of_disallowed_pairs = 0;
+                //for (int i = 0; i < teams.Count; i++)
+                //{
+                //    for (int j = i+1; j < teams.Count; j++)
+                //    {
+                //        if (!ValidateIfNessesary(teams[i], teams[j]))
+                //            number_of_disallowed_pairs++;
+                //        else
+                //            number_of_allowed_pairs++;
+                //    }
+                //}
+                //if (number_of_disallowed_pairs > number_of_allowed_pairs)
+                //    return false;
+                //return true;
+                List<Pair> all_pairs = new List<Pair>();
+                for (int i = 0; i < n; i++)
                 {
-                    for (int j = i+1; j < teams.Count; j++)
+                    for (int j = i+1; j < n; j++)
                     {
-                        if (!ValidateIfNessesary(teams[i], teams[j]))
-                            number_of_disallowed_matches++;
+                        all_pairs.Add(new Pair { HomeTeam = teams[i], AwayTeam = teams[j] });
                     }
                 }
-                if (number_of_all_matches / 2 < number_of_disallowed_matches)
+
+                //Remove bad pairs
+
+                for (int i = all_pairs.Count-1; i >= 0; i--)
+                {
+                    if (!ValidateIfNessesary(all_pairs[i].HomeTeam, all_pairs[i].AwayTeam))
+                        all_pairs = all_pairs.Where(p => p != all_pairs[i]).ToList();
+                }
+
+                List<List<Pair>> zestawy = new List<List<Pair>>();
+
+                foreach (var pair in all_pairs)
+                {
+                    //List<Pair> Znalezionezestawy = new List<Pair>()
+                    for (int j = 0; j < n/2; j++)
+                    {
+                        bool isAdded = false;
+                        foreach (var zestaw in zestawy)
+                        {
+                            if (zestaw.Count == n/2)
+                                continue;
+                            if (zestaw.Exists(p => p.HomeTeam == pair.HomeTeam || p.AwayTeam == pair.HomeTeam))
+                                continue;
+                            if (zestaw.Exists(p => p.HomeTeam == pair.AwayTeam || p.AwayTeam == pair.AwayTeam))
+                                continue;
+                            //Czy istnieje już taki zestaw 
+                            zestaw.Add(pair);
+                            isAdded = true;
+                            break;
+                        }
+                        if (!isAdded)
+                        {
+                            List<Pair> zestaw = new List<Pair> { pair };
+                            zestawy.Add(zestaw);
+                        }
+                    }
+                }
+
+                int wrongcase = 0;
+                foreach (var zestaw in zestawy)
+                {
+                    foreach (var pair in zestaw)
+                    {
+                        if (!ValidateIfNessesary(pair.HomeTeam, pair.AwayTeam))
+                            wrongcase++;
+                    }
+                }
+                if (zestawy.Count == wrongcase)
                     return false;
                 return true;
+
+
             }
             return true;
         }
@@ -102,7 +166,7 @@ namespace Drawing.SharedCode.Models.Drawings
             if (number < 0)
                 throw new Exception("Factorial number lower than zero.");
             int result = 1;
-            for (int i = 2; i < number; i++)
+            for (int i = 2; i <= number; i++)
             {
                 result *= i;
             }
@@ -131,5 +195,7 @@ namespace Drawing.SharedCode.Models.Drawings
 
             return true;
         }
+        
+
     }
 }

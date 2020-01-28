@@ -28,6 +28,26 @@ namespace Drawing.SharedCode.Tests
         [TestMethod]
         public void DrawWithCountryValidation_And_ItsPossible()
         {
+            //for (int i = 0; i < 1000; i++)
+            //{
+            //    TeamsContainerSource source = new TeamsContainerSource();
+            //    source.AddTeam(new Models.Team { Name = "Barcelona", Country = "Spain" });
+            //    source.AddTeam(new Models.Team { Name = "Real Madrid", Country = "Spain" });
+            //    source.AddTeam(new Models.Team { Name = "Juventus", Country = "Italy" });
+            //    source.AddTeam(new Models.Team { Name = "Bayern Munchen", Country = "Germany" });
+            //    PairDrawing drawing = (PairDrawing)DrawFactory.CreatePairsDraw(source, new List<ITeamValidation> { new CountryValidation() });
+            //    try
+            //    {
+            //        drawing.Draw();
+            //        Assert.IsTrue(true);
+            //    }
+            //    catch (System.Exception ex)
+            //    {
+            //        Assert.Fail();
+            //    }
+            //}
+
+
             for (int i = 0; i < 1000; i++)
             {
                 TeamsContainerSource source = new TeamsContainerSource();
@@ -35,6 +55,10 @@ namespace Drawing.SharedCode.Tests
                 source.AddTeam(new Models.Team { Name = "Real Madrid", Country = "Spain" });
                 source.AddTeam(new Models.Team { Name = "Juventus", Country = "Italy" });
                 source.AddTeam(new Models.Team { Name = "Bayern Munchen", Country = "Germany" });
+                source.AddTeam(new Models.Team { Name = "Valencia", Country = "Spain" });
+                source.AddTeam(new Models.Team { Name = "Real Betis", Country = "Spain" });
+                source.AddTeam(new Models.Team { Name = "Manchaster City", Country = "England" });
+                source.AddTeam(new Models.Team { Name = "Liverpool. CF", Country = "England" });
                 PairDrawing drawing = (PairDrawing)DrawFactory.CreatePairsDraw(source, new List<ITeamValidation> { new CountryValidation() });
                 try
                 {
@@ -47,7 +71,6 @@ namespace Drawing.SharedCode.Tests
                 }
             }
 
-            
         }
 
         [TestMethod]
