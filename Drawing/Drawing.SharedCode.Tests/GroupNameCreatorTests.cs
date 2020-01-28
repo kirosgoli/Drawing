@@ -1,10 +1,5 @@
 ﻿using Drawing.SharedCode.Tools;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Drawing.SharedCode.Tests
 {
@@ -14,11 +9,12 @@ namespace Drawing.SharedCode.Tests
         [TestMethod]
         public void CreateNameForLowerGroupNumber()
         {
-            Assert.AreEqual("A",GroupNameCreator.CreateGroupNameFromNumber(1));
+            Assert.AreEqual("A", GroupNameCreator.CreateGroupNameFromNumber(1));
             Assert.AreEqual("E", GroupNameCreator.CreateGroupNameFromNumber(5));
             Assert.AreEqual("O", GroupNameCreator.CreateGroupNameFromNumber(15));
             Assert.AreEqual("Z", GroupNameCreator.CreateGroupNameFromNumber(26));
         }
+
         [TestMethod]
         public void CreateNameForBiggerGroupNumber()
         {

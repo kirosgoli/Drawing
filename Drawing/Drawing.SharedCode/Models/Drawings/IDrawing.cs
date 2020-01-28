@@ -1,8 +1,7 @@
-﻿namespace Drawing.SharedCode.Interfaces
+﻿namespace Drawing.SharedCode.Models.Drawings
 {
     public interface IDrawing
     {
         void Draw();
-        
     }
 }
