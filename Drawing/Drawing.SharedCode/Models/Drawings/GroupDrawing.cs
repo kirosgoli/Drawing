@@ -1,10 +1,6 @@
-﻿using Drawing.SharedCode.Interfaces;
-using Drawing.SharedCode.Tools;
+﻿using Drawing.SharedCode.Tools;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Drawing.SharedCode.Models.Drawings
 {
@@ -22,6 +18,7 @@ namespace Drawing.SharedCode.Models.Drawings
             }
             this.Groups = Groups;
         }
+
         public void Draw()
         {
             throw new NotImplementedException();
@@ -31,6 +28,5 @@ namespace Drawing.SharedCode.Models.Drawings
         {
             drawingTeams = teams;
         }
-
     }
 }

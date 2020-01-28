@@ -1,15 +1,12 @@
 ﻿using Drawing.SharedCode.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Drawing.SharedCode.Sources
 {
-    public class TeamsContainerSource : Interfaces.ITeamsSource
+    public class TeamsContainerSource : ITeamsSource
     {
         private List<Team> teams;
+
         public TeamsContainerSource()
         {
             teams = new List<Team>();
