@@ -53,6 +53,7 @@
     <Compile Include="GroupNameCreatorTests.cs" />
     <Compile Include="PairDrawingTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserDefiniedValidation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

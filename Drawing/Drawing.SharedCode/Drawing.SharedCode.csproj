@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="Models\Drawings\IDrawing.cs" />
     <Compile Include="Models\NationalTeam.cs" />
+    <Compile Include="Models\Set.cs" />
+    <Compile Include="Models\SetsContainer.cs" />
     <Compile Include="Sources\ITeamsSource.cs" />
     <Compile Include="Models\Drawings\DrawFactory.cs" />
     <Compile Include="Models\Group.cs" />
