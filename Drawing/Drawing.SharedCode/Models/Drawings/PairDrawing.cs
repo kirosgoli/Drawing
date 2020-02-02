@@ -11,7 +11,6 @@ namespace Drawing.SharedCode.Models.Drawings
         internal IEnumerable<ITeamValidation> Validations { get; private set; }
         public IEnumerable<Pair> Pairs { get; private set; }
 
-
         public PairDrawing()
         {
         }
@@ -48,10 +47,12 @@ namespace Drawing.SharedCode.Models.Drawings
         {
             drawingTeams = teams;
         }
+
         internal void SetValidation(IEnumerable<ITeamValidation> validations)
         {
             Validations = validations;
         }
+
         private List<Team> getPossibleTeamThatCanBeDrown(Team t1)
         {
             List<Team> leftTeams = drawingTeams.Where(t => t != t1).ToList();
@@ -100,7 +101,7 @@ namespace Drawing.SharedCode.Models.Drawings
                 List<Pair> all_pairs = new List<Pair>();
                 for (int i = 0; i < n; i++)
                 {
-                    for (int j = i+1; j < n; j++)
+                    for (int j = i + 1; j < n; j++)
                     {
                         all_pairs.Add(new Pair { HomeTeam = teams[i], AwayTeam = teams[j] });
                     }
@@ -108,55 +109,61 @@ namespace Drawing.SharedCode.Models.Drawings
 
                 //Remove bad pairs
 
-                for (int i = all_pairs.Count-1; i >= 0; i--)
+                for (int i = all_pairs.Count - 1; i >= 0; i--)
                 {
                     if (!ValidateIfNessesary(all_pairs[i].HomeTeam, all_pairs[i].AwayTeam))
                         all_pairs = all_pairs.Where(p => p != all_pairs[i]).ToList();
                 }
 
-                List<List<Pair>> zestawy = new List<List<Pair>>();
+                SetsContainer setsContainer = new SetsContainer();
 
                 foreach (var pair in all_pairs)
                 {
                     //List<Pair> Znalezionezestawy = new List<Pair>()
-                    for (int j = 0; j < n/2; j++)
+                    for (int j = 0; j < n / 2; j++)
                     {
                         bool isAdded = false;
-                        foreach (var zestaw in zestawy)
+                        foreach (var set in setsContainer.Sets)
                         {
-                            if (zestaw.Count == n/2)
+                            if (set.IsFull)
                                 continue;
-                            if (zestaw.Exists(p => p.HomeTeam == pair.HomeTeam || p.AwayTeam == pair.HomeTeam))
+                            if (set.IsTeamAlreadyInSet(pair.HomeTeam))
                                 continue;
-                            if (zestaw.Exists(p => p.HomeTeam == pair.AwayTeam || p.AwayTeam == pair.AwayTeam))
+                            if (set.IsTeamAlreadyInSet(pair.AwayTeam))
                                 continue;
-                            //Czy istnieje już taki zestaw 
-                            zestaw.Add(pair);
-                            isAdded = true;
-                            break;
+                            //Czy istnieje już taki zestaw
+                            Set _set = new Set(set);
+                            _set.TryAdd(pair);
+                            if (!setsContainer.isSetAlreadyAdded(_set))
+                            {
+                                set.TryAdd(pair);
+                                isAdded = true;
+                                break;
+                            }
                         }
                         if (!isAdded)
                         {
-                            List<Pair> zestaw = new List<Pair> { pair };
-                            zestawy.Add(zestaw);
+                            Set set = new Set(n / 2);
+                            set.TryAdd(pair);
+                            setsContainer.TryAdd(set);
                         }
                     }
                 }
 
-                int wrongcase = 0;
-                foreach (var zestaw in zestawy)
-                {
-                    foreach (var pair in zestaw)
-                    {
-                        if (!ValidateIfNessesary(pair.HomeTeam, pair.AwayTeam))
-                            wrongcase++;
-                    }
-                }
-                if (zestawy.Count == wrongcase)
+                //int wrongcase = 0;
+                //foreach (var set in setsContainer.Sets)
+                //{
+                //    foreach (var pair in set.Pairs)
+                //    {
+                //        if (!ValidateIfNessesary(pair.HomeTeam, pair.AwayTeam))
+                //            wrongcase++;
+                //    }
+                //}
+                //if (setsContainer.Sets.Count == wrongcase)
+                //    return false;
+                //return true;
+                if (!setsContainer.Sets.Exists(s => s.Pairs.Count == n / 2))
                     return false;
-                return true;
-
-
             }
             return true;
         }
@@ -173,7 +180,6 @@ namespace Drawing.SharedCode.Models.Drawings
             return result;
         }
 
-
         /// <summary>
         /// To refactor
         /// </summary>
@@ -188,14 +194,12 @@ namespace Drawing.SharedCode.Models.Drawings
             {
                 foreach (var validation in Validations)
                 {
-                     if (!validation.CanPlayAgainstThemself(t1, t2))
+                    if (!validation.CanPlayAgainstThemself(t1, t2))
                         return false;
                 }
             }
 
             return true;
         }
-        
-
     }
 }

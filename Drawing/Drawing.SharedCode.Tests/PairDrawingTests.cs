@@ -28,25 +28,24 @@ namespace Drawing.SharedCode.Tests
         [TestMethod]
         public void DrawWithCountryValidation_And_ItsPossible()
         {
-            //for (int i = 0; i < 1000; i++)
-            //{
-            //    TeamsContainerSource source = new TeamsContainerSource();
-            //    source.AddTeam(new Models.Team { Name = "Barcelona", Country = "Spain" });
-            //    source.AddTeam(new Models.Team { Name = "Real Madrid", Country = "Spain" });
-            //    source.AddTeam(new Models.Team { Name = "Juventus", Country = "Italy" });
-            //    source.AddTeam(new Models.Team { Name = "Bayern Munchen", Country = "Germany" });
-            //    PairDrawing drawing = (PairDrawing)DrawFactory.CreatePairsDraw(source, new List<ITeamValidation> { new CountryValidation() });
-            //    try
-            //    {
-            //        drawing.Draw();
-            //        Assert.IsTrue(true);
-            //    }
-            //    catch (System.Exception ex)
-            //    {
-            //        Assert.Fail();
-            //    }
-            //}
-
+            for (int i = 0; i < 1000; i++)
+            {
+                TeamsContainerSource source = new TeamsContainerSource();
+                source.AddTeam(new Models.Team { Name = "Barcelona", Country = "Spain" });
+                source.AddTeam(new Models.Team { Name = "Real Madrid", Country = "Spain" });
+                source.AddTeam(new Models.Team { Name = "Juventus", Country = "Italy" });
+                source.AddTeam(new Models.Team { Name = "Bayern Munchen", Country = "Germany" });
+                PairDrawing drawing = (PairDrawing)DrawFactory.CreatePairsDraw(source, new List<ITeamValidation> { new CountryValidation() });
+                try
+                {
+                    drawing.Draw();
+                    Assert.IsTrue(true);
+                }
+                catch (System.Exception ex)
+                {
+                    Assert.Fail();
+                }
+            }
 
             for (int i = 0; i < 1000; i++)
             {
@@ -70,7 +69,41 @@ namespace Drawing.SharedCode.Tests
                     Assert.Fail();
                 }
             }
+        }
 
+        [TestMethod]
+        public void ChampionsLeagueOneSixteenDrawEdition1920()
+        {
+            for (int i = 0; i < 1000; i++)
+            {
+                TeamsContainerSource source = new TeamsContainerSource();
+                source.AddTeam(new Models.Team { Name = "Barcelona", Country = "Spain" });
+                source.AddTeam(new Models.Team { Name = "Real Madrid", Country = "Spain" });
+                source.AddTeam(new Models.Team { Name = "Juventus", Country = "Italy" });
+                source.AddTeam(new Models.Team { Name = "Bayern Munchen", Country = "Germany" });
+                source.AddTeam(new Models.Team { Name = "Valencia", Country = "Spain" });
+                source.AddTeam(new Models.Team { Name = "Atletico Madrid", Country = "Spain" });
+                source.AddTeam(new Models.Team { Name = "Manchester City", Country = "England" });
+                source.AddTeam(new Models.Team { Name = "Liverpool", Country = "England" });
+                source.AddTeam(new Models.Team { Name = "PSG", Country = "France" });
+                source.AddTeam(new Models.Team { Name = "Tottenham", Country = "England" });
+                source.AddTeam(new Models.Team { Name = "Atalanta", Country = "Italy" });
+                source.AddTeam(new Models.Team { Name = "Napoli", Country = "Italy" });
+                source.AddTeam(new Models.Team { Name = "Borussia", Country = "Germany" });
+                source.AddTeam(new Models.Team { Name = "RB Lipsk", Country = "Germany" });
+                source.AddTeam(new Models.Team { Name = "Lyon", Country = "France" });
+                source.AddTeam(new Models.Team { Name = "Chelsea", Country = "England" });
+                PairDrawing drawing = (PairDrawing)DrawFactory.CreatePairsDraw(source, new List<ITeamValidation> { new CountryValidation(), new UserDefiniedValidation() });
+                try
+                {
+                    drawing.Draw();
+                    Assert.IsTrue(true);
+                }
+                catch (System.Exception ex)
+                {
+                    Assert.Fail();
+                }
+            }
         }
 
         [TestMethod]
@@ -94,8 +127,6 @@ namespace Drawing.SharedCode.Tests
                     Assert.IsTrue(true);
                 }
             }
-
-
         }
     }
 }
