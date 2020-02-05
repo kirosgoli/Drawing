@@ -7,6 +7,5 @@ namespace Drawing.SharedCode.Models
         public virtual String Name { get; set; }
 
         public String Country { get; set; }
-        public Group Group { get; set; }
     }
 }

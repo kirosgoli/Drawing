@@ -54,6 +54,7 @@
     <Compile Include="Models\Team.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sources\TeamsContainerSource.cs" />
+    <Compile Include="Sources\TextFileSource.cs" />
     <Compile Include="Tools\GroupNameCreator.cs" />
     <Compile Include="Validation\CountryValidation.cs" />
     <Compile Include="Validation\IDrawValidation.cs" />
@@ -61,8 +62,6 @@
     <Compile Include="Validation\IValidationBase.cs" />
     <Compile Include="Validation\PairDrawValidation.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

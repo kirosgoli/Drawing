@@ -53,7 +53,8 @@
     <Compile Include="GroupNameCreatorTests.cs" />
     <Compile Include="PairDrawingTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserDefiniedValidation.cs" />
+    <Compile Include="Sources\TextFileSourceTests.cs" />
+    <Compile Include="Validations\UserDefiniedValidation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -63,6 +64,11 @@
       <Project>{d2eb3a4c-5e55-4bf1-8688-91efb6000c21}</Project>
       <Name>Drawing.SharedCode</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Files\Teams.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
